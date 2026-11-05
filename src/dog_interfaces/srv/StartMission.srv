@@ -1,0 +1,5 @@
+string mission_name          # empty => use default from YAML
+bool reset_to_first
+---
+bool success
+string message

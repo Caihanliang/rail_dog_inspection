@@ -1,0 +1,17 @@
+pcd_publisher:
+  ros__parameters:
+    pcd_path: "data/raw/sample_rail_scene.pcd"
+    frame_id: "map"
+    topic: "/lidar/points"
+    publish_rate_hz: 2.0
+    loop: true
+
+cloud_preprocess:
+  ros__parameters:
+    input_topic: "/lidar/points"
+    output_topic: "/lidar/points_filtered"
+    min_range: 0.0
+    max_range: 50.0
+    min_z: 0.05
+    max_z: 3.5
+    voxel_leaf: 0.08

@@ -1,0 +1,41 @@
+fake_odom_publisher:
+  ros__parameters:
+    # Start near first inspection point for demo
+    x: 9.5
+    y: 1.5
+    z: 0.0
+    yaw_deg: 0.0
+    publish_rate_hz: 20.0
+
+pcd_publisher:
+  ros__parameters:
+    # Relative to workspace; launch file also allows absolute override
+    # Sample PCD coordinates are authored in the map/corridor frame.
+    pcd_path: "data/raw/sample_rail_scene.pcd"
+    frame_id: "map"
+    topic: "/lidar/points"
+    publish_rate_hz: 2.0
+    loop: true
+
+cloud_preprocess:
+  ros__parameters:
+    input_topic: "/lidar/points"
+    output_topic: "/lidar/points_filtered"
+    # Offline sample PCD is in map frame and spans ~0..40 m along x.
+    min_range: 0.0
+    max_range: 50.0
+    min_z: 0.05
+    max_z: 3.5
+    voxel_leaf: 0.08
+
+mission_manager:
+  ros__parameters:
+    mission_config: "config/mission_points.yaml"
+    cloud_topic: "/lidar/points_filtered"
+    records_dir: "data/records"
+    arrive_pos_tol_m: 1.5
+    arrive_yaw_tol_deg: 30.0
+    auto_advance: true
+    capture_on_arrive: true
+    # Offline demo: after capture, teleport fake base to the next point
+    demo_teleport: true

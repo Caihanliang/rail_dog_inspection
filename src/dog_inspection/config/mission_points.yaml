@@ -1,0 +1,29 @@
+mission:
+  name: "yard_line_a"
+  # Demo points aligned with sample_rail_scene.pcd cabinets
+  points:
+    - id: P1
+      xyz: [10.0, 2.0, 0.0]
+      yaw: 0.0
+      actions: [save_cloud]
+      # ROI in lidar_link for simple missing-object alert (equipment box area)
+      roi:
+        min_xyz: [8.5, 1.0, 0.2]
+        max_xyz: [11.5, 3.0, 2.0]
+        min_points: 80
+    - id: P2
+      xyz: [25.0, 2.5, 0.0]
+      yaw: 1.57
+      actions: [save_cloud]
+      roi:
+        min_xyz: [23.5, 1.5, 0.2]
+        max_xyz: [26.5, 3.5, 2.0]
+        min_points: 60
+    - id: P3
+      xyz: [35.0, 0.0, 0.0]
+      yaw: 0.0
+      actions: [save_cloud]
+      roi:
+        min_xyz: [33.0, -2.0, 0.2]
+        max_xyz: [37.0, 2.0, 2.0]
+        min_points: 30

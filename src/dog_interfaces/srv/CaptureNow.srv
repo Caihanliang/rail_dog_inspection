@@ -1,0 +1,8 @@
+string point_id              # empty => use current mission point
+bool force                   # ignore ARRIVED state and capture immediately
+---
+bool success
+string message
+string cloud_path
+bool alert
+string alert_reason

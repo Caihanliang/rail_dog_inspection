@@ -1,0 +1,9 @@
+# Static extrinsic: base_link -> lidar_link (meters / degrees)
+# Replace with vendor calibration when the real dog arrives.
+lidar_extrinsic:
+  x: 0.35
+  y: 0.0
+  z: 0.45
+  roll_deg: 0.0
+  pitch_deg: 0.0
+  yaw_deg: 0.0
