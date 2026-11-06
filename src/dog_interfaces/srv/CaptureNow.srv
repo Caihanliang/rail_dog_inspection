@@ -1,3 +1,4 @@
+# 请求：立刻在某点抓拍留证
 string point_id              # empty => use current mission point
 bool force                   # ignore ARRIVED state and capture immediately
 ---

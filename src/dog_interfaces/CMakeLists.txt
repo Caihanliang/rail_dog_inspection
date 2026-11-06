@@ -1,3 +1,4 @@
+# 如何将.msg/.src生成Python/C++可用的接口
 cmake_minimum_required(VERSION 3.8)
 project(dog_interfaces)
 

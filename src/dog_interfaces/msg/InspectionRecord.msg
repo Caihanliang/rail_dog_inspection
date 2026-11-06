@@ -1,4 +1,5 @@
 # One capture record at an inspection point
+# 广播留证结果
 string mission_name
 string point_id
 string cloud_path

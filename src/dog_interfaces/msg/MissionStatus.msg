@@ -1,4 +1,5 @@
 # Current inspection mission status
+# 广播当前任务状态
 string mission_name
 string state                 # IDLE / GO_TO_POINT / ARRIVED / CAPTURE / LOG / NEXT / DONE / FAULT
 string current_point_id

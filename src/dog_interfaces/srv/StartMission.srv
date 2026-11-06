@@ -1,3 +1,4 @@
+# 开始/重置巡检任务
 string mission_name          # empty => use default from YAML
 bool reset_to_first
 ---
