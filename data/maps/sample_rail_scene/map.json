@@ -1,0 +1,8 @@
+{
+  "name": "sample_rail_scene",
+  "cloud": "sample_rail_scene.pcd",
+  "cloud_path": "data/maps/sample_rail_scene/sample_rail_scene.pcd",
+  "source_raw": "data/raw/sample_rail_scene.pcd",
+  "note": "",
+  "registered_at": "2026-11-09T11:48:48"
+}

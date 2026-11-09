@@ -10,7 +10,9 @@
 |------|------|
 | `data/raw/` | **输入**：你的原始点云（`.pcd`）或后续 bag |
 | `data/records/` | **输出**：巡检留证（程序自动生成，不要当输入） |
+| `data/maps/` | **地图资产**：Map Studio 登记的点云副本与 `map.json` |
 | `data/raw/sample_rail_scene.pcd` | 已提供的示例轨旁场景点云 |
+| `web/map_studio/` | 离线点云看图 / 标巡检点（写回 `mission_points.yaml`） |
 
 自己的文件示例：`data/raw/my_site_scan.pcd`  
 说明见：`data/raw/README.md`
@@ -23,7 +25,30 @@ src/
   dog_bringup/      # launch、参数、静态 TF、假里程计
   dog_perception/   # PCD 读入发布、裁剪/体素滤波
   dog_inspection/   # 点位任务、留证、ROI 告警、report.json
+web/
+  map_studio/       # 离线 PCD 三维看图与巡检点标绘
 ```
+
+## Map Studio（离线看图 / 标点）
+
+不依赖 ROS，用浏览器打开点云、点击标 `P1/P2/…`，可写回任务配置或登记到 `data/maps/`：
+
+```bash
+cd web/map_studio
+# 推荐：uv（无系统 pip/venv 时也可用）
+# curl -LsSf https://astral.sh/uv/install.sh | sh
+uv venv .venv
+source .venv/bin/activate
+uv pip install -r requirements.txt
+python -m uvicorn app:app --host 127.0.0.1 --port 8765
+```
+
+浏览器打开 [http://127.0.0.1:8765](http://127.0.0.1:8765)。
+
+- 加载 `data/raw/*.pcd`（默认示例 `sample_rail_scene.pcd`）
+- **默认 2D 俯视打点**（可切 3D 核对）；开启「标点」后左键落点，右键平移、滚轮缩放
+- 可载入 / 写回 `src/dog_inspection/config/mission_points.yaml`（写前自动 `.bak`）
+- 「登记到 data/maps」会复制点云并写 `map.json`
 
 ## 编译与运行（Ubuntu + ROS 2）
 

@@ -7,6 +7,7 @@
 | 文件 | 说明 |
 |------|------|
 | `sample_rail_scene.pcd` | 合成轨旁走廊场景（ASCII PCD，含 xyz + intensity） |
+| `yard_photo_scene.pcd` | 按巡检现场照片布局合成的货场场景（站台/轨道/车厢/机器狗剪影，非照片真重建） |
 
 场景坐标系为 **map（走廊）**，单位米：
 
@@ -40,5 +41,5 @@ ros2 launch dog_bringup inspection_demo.launch.py \
 data/
   raw/        # 原始点云 / 录包（输入）← 你的点云放这里
   records/    # 巡检留证输出（程序自动写，勿手改当输入）
-  maps/       # 预留：后续建图结果
+  maps/       # Map Studio 登记的地图资产（见 data/maps/README.md）
 ```

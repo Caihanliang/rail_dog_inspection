@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map Studio · rail_dog_inspection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>Map Studio</h1>
+        <p>离线点云看图与巡检点标绘，写回 mission_points.yaml</p>
+      </div>
+
+      <section class="section">
+        <h2>点云</h2>
+        <label class="field">
+          选择 PCD
+          <select id="cloud-select"></select>
+        </label>
+        <label class="field">
+          体素降采样 (m)
+          <input id="voxel" type="number" min="0.05" max="1" step="0.05" value="0.15" />
+        </label>
+        <div class="row">
+          <button id="btn-load" class="primary" type="button">加载点云</button>
+          <button id="btn-refresh-clouds" type="button">刷新列表</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>视图</h2>
+        <div class="view-toggle" role="group" aria-label="视图模式">
+          <button id="btn-view-2d" type="button" class="view-btn active">2D 俯视</button>
+          <button id="btn-view-3d" type="button" class="view-btn">3D</button>
+        </div>
+        <p class="hint" id="view-hint">俯视打点更直观；3D 用于核对高度</p>
+      </section>
+
+      <section class="section">
+        <h2>标点</h2>
+        <label class="toggle">
+          <input id="mark-mode" type="checkbox" checked />
+          短按左键落点（拖拽仍可平移/旋转）
+        </label>
+        <label class="field">
+          任务名
+          <input id="mission-name" type="text" value="yard_line_a" />
+        </label>
+        <div class="row">
+          <button id="btn-load-mission" type="button">载入现有配置</button>
+          <button id="btn-clear-points" type="button" class="danger">清空点</button>
+        </div>
+        <div id="points-list" class="points-list"></div>
+        <div class="row">
+          <button id="btn-save-mission" class="primary" type="button">写回 YAML</button>
+          <button id="btn-export" type="button">导出下载</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>登记地图</h2>
+        <label class="field">
+          地图名
+          <input id="map-name" type="text" placeholder="yard_line_a_map" />
+        </label>
+        <label class="field">
+          备注
+          <input id="map-note" type="text" placeholder="可选" />
+        </label>
+        <button id="btn-register-map" type="button">登记到 data/maps</button>
+      </section>
+
+      <div id="status" class="status">就绪</div>
+    </aside>
+
+    <main class="viewport">
+      <div id="canvas-host"></div>
+      <div class="hud">
+        <span id="hud-help">2D：滚轮缩放 · 右键平移 · 开启标点后左键落点</span><br />
+        当前 <strong id="hud-cloud">未加载</strong> · 视图 <strong id="hud-view">2D</strong>
+      </div>
+    </main>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="/static/app.js"></script>
+  </body>
+</html>

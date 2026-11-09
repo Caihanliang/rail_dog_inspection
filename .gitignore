@@ -3,6 +3,8 @@ install/
 log/
 __pycache__/
 *.pyc
+.venv/
+web/map_studio/.venv/
 .vscode/
 .idea/
 data/records/**
